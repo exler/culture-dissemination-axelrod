@@ -33,28 +33,44 @@ class GridDrawer:
         if y - 1 >= 0 and x - 1 >= 0:
             neighbor = self.grid[x, y - 1]
             similarity = self.get_similarity(culture, neighbor)
-            color = self.color_mapping[similarity] if similarity in self.color_mapping else similarity * 255
+            color = (
+                self.color_mapping[similarity]
+                if similarity in self.color_mapping
+                else (int(similarity * 255), int(similarity * 255), int(similarity * 255))
+            )
             start_pos, end_pos = (x * 16, y * 16), (x * 16 + 16, y * 16)
             pygame.draw.line(screen, color, start_pos, end_pos, width=2)
 
         if x + 1 < self.grid.shape[0] and y - 1 >= 0:
             neighbor = self.grid[x + 1, y]
             similarity = self.get_similarity(culture, neighbor)
-            color = self.color_mapping[similarity] if similarity in self.color_mapping else similarity * 255
+            color = (
+                self.color_mapping[similarity]
+                if similarity in self.color_mapping
+                else (int(similarity * 255), int(similarity * 255), int(similarity * 255))
+            )
             start_pos, end_pos = (x * 16 + 16, y * 16), (x * 16 + 16, y * 16 + 16)
             pygame.draw.line(screen, color, start_pos, end_pos, width=2)
 
         if y + 1 < self.grid.shape[1] and x + 1 < self.grid.shape[0]:
             neighbor = self.grid[x, y + 1]
             similarity = self.get_similarity(culture, neighbor)
-            color = self.color_mapping[similarity] if similarity in self.color_mapping else similarity * 255
+            color = (
+                self.color_mapping[similarity]
+                if similarity in self.color_mapping
+                else (int(similarity * 255), int(similarity * 255), int(similarity * 255))
+            )
             start_pos, end_pos = (x * 16, y * 16 + 16), (x * 16 + 16, y * 16 + 16)
             pygame.draw.line(screen, color, start_pos, end_pos, width=2)
 
         if x - 1 >= 0 and y + 1 < self.grid.shape[1]:
             neighbor = self.grid[x - 1, y]
             similarity = self.get_similarity(culture, neighbor)
-            color = self.color_mapping[similarity] if similarity in self.color_mapping else similarity * 255
+            color = (
+                self.color_mapping[similarity]
+                if similarity in self.color_mapping
+                else (int(similarity * 255), int(similarity * 255), int(similarity * 255))
+            )
             start_pos, end_pos = (x * 16, y * 16), (x * 16, y * 16 + 16)
             pygame.draw.line(screen, color, start_pos, end_pos, width=2)
 
