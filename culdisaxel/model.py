@@ -89,8 +89,8 @@ class AxelrodModel:
 
             active_site = self.get_random_culture()
             neighbors = get_grid_neighbors(self.n, active_site)
-            for neighbor in neighbors:
-                if self.check_if_sites_interact(active_site, neighbor):
-                    self.change_feature(active_site, neighbor)
+            active_neighbor = neighbors[np.random.randint(len(neighbors))]
+            if self.check_if_sites_interact(active_site, active_neighbor):
+                self.change_feature(active_site, active_neighbor)
 
         GridDrawer(self._grid, self.feature_range).draw()
